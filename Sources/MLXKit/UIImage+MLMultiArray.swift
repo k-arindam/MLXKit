@@ -101,15 +101,23 @@ public extension UIImage {
             
             // Find min and max pixel values
             for index in 0..<totalPixels {
-                minPixelValue = min(minPixelValue, mlArray[index], mlArray[index + totalPixels], mlArray[index + totalPixels * 2])
-                maxPixelValue = max(maxPixelValue, mlArray[index], mlArray[index + totalPixels], mlArray[index + totalPixels * 2])
+                let redIndex = index
+                let greenIndex = index + totalPixels
+                let blueIndex = index + totalPixels * 2
+
+                minPixelValue = min(minPixelValue, mlArray[redIndex], mlArray[greenIndex], mlArray[blueIndex])
+                maxPixelValue = max(maxPixelValue, mlArray[redIndex], mlArray[greenIndex], mlArray[blueIndex])
             }
             
             // Normalize pixel values
             for index in 0..<totalPixels {
-                mlArray[index] = (mlArray[index] - minPixelValue) / (maxPixelValue - minPixelValue)
-                mlArray[index + totalPixels] = (mlArray[index + totalPixels] - minPixelValue) / (maxPixelValue - minPixelValue)
-                mlArray[index + totalPixels * 2] = (mlArray[index + totalPixels * 2] - minPixelValue) / (maxPixelValue - minPixelValue)
+                let redIndex = index
+                let greenIndex = index + totalPixels
+                let blueIndex = index + totalPixels * 2
+
+                mlArray[redIndex] = (mlArray[redIndex] - minPixelValue) / (maxPixelValue - minPixelValue)
+                mlArray[greenIndex] = (mlArray[greenIndex] - minPixelValue) / (maxPixelValue - minPixelValue)
+                mlArray[blueIndex] = (mlArray[blueIndex] - minPixelValue) / (maxPixelValue - minPixelValue)
             }
         }
         

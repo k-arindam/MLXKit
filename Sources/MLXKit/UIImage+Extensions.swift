@@ -172,14 +172,14 @@ extension UIImage {
     /// - Parameter maxDims: The maximum dimension for either width or height.
     /// - Returns: A CGSize representing the possible resized dimensions.
     public func possibleDims(maxDims: CGFloat) -> CGSize {
-        let image = self
+        let size = self.size
         
-        let originalWidth = image.size.width
-        let originalHeight = image.size.height
+        let originalWidth = size.width
+        let originalHeight = size.height
         
         // Check if the image is already within the size limit
         if originalWidth <= maxDims && originalHeight <= maxDims {
-            return image.size
+            return size
         }
         
         let aspectRatio = originalWidth / originalHeight
