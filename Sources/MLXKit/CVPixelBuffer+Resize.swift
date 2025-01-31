@@ -61,6 +61,8 @@ public func resizePixelBuffer(from srcPixelBuffer: CVPixelBuffer,
   }
 }
 
+#if os(iOS)
+
 /**
   First crops the pixel buffer, then resizes it.
 
@@ -93,6 +95,21 @@ public func resizePixelBuffer(_ srcPixelBuffer: CVPixelBuffer,
 /**
   Resizes a CVPixelBuffer to a new width and height.
 
+  This allocates a new destination pixel buffer that is Metal-compatible.
+*/
+public func resizePixelBuffer(_ pixelBuffer: CVPixelBuffer,
+                              width: Int, height: Int) -> CVPixelBuffer? {
+  return resizePixelBuffer(pixelBuffer, cropX: 0, cropY: 0,
+                           cropWidth: CVPixelBufferGetWidth(pixelBuffer),
+                           cropHeight: CVPixelBufferGetHeight(pixelBuffer),
+                           scaleWidth: width, scaleHeight: height)
+}
+
+#endif
+
+/**
+  Resizes a CVPixelBuffer to a new width and height.
+
   This function requires the caller to pass in both the source and destination
   pixel buffers. The dimensions of destination pixel buffer should be at least
   `width` x `height` pixels.
@@ -105,19 +122,6 @@ public func resizePixelBuffer(from srcPixelBuffer: CVPixelBuffer,
                     cropWidth: CVPixelBufferGetWidth(srcPixelBuffer),
                     cropHeight: CVPixelBufferGetHeight(srcPixelBuffer),
                     scaleWidth: width, scaleHeight: height)
-}
-
-/**
-  Resizes a CVPixelBuffer to a new width and height.
-
-  This allocates a new destination pixel buffer that is Metal-compatible.
-*/
-public func resizePixelBuffer(_ pixelBuffer: CVPixelBuffer,
-                              width: Int, height: Int) -> CVPixelBuffer? {
-  return resizePixelBuffer(pixelBuffer, cropX: 0, cropY: 0,
-                           cropWidth: CVPixelBufferGetWidth(pixelBuffer),
-                           cropHeight: CVPixelBufferGetHeight(pixelBuffer),
-                           scaleWidth: width, scaleHeight: height)
 }
 
 /**

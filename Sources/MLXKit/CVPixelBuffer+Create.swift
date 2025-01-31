@@ -1,3 +1,5 @@
+#if os(iOS)
+
 import Foundation
 import Accelerate
 
@@ -146,3 +148,5 @@ public extension CVPixelBuffer {
     return dstPixelBuffer
   }
 }
+
+#endif

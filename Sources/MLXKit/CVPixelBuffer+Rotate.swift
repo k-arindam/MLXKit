@@ -56,6 +56,8 @@ public func rotate90PixelBuffer(from srcPixelBuffer: CVPixelBuffer,
   }
 }
 
+#if os(iOS)
+
 /**
   Rotates a CVPixelBuffer by the provided factor of 90 counterclock-wise.
 
@@ -77,3 +79,5 @@ public func rotate90PixelBuffer(_ srcPixelBuffer: CVPixelBuffer, factor: UInt8) 
   }
   return dstPixelBuffer
 }
+
+#endif
