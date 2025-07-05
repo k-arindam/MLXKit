@@ -1,3 +1,5 @@
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fk-arindam%2FMLXKit%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/k-arindam/MLXKit) [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fk-arindam%2FMLXKit%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/k-arindam/MLXKit)
+
 # MLXKit
 
 MLXKit is a Swift package that provides utilities and extensions for working with CoreML, images, and multi-dimensional arrays. It simplifies the process of integrating machine learning models into your iOS applications.
