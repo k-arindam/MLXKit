@@ -1,6 +1,19 @@
 import CoreML
 
 extension MLMultiArray {
+    /// Converts the `MLMultiArray` instance into a Swift `[Float]` array.
+    ///
+    /// This computed property iterates through all elements of the `MLMultiArray`
+    /// and converts each element to a `Float` value. It is useful for easily
+    /// extracting the numerical data from an `MLMultiArray` into a more
+    /// commonly used Swift array format, especially when working with model
+    /// outputs that are `MLMultiArray`s and you need to perform further
+    /// processing or display the results.
+    ///
+    /// - Returns: An array of `Float` values representing the contents of the `MLMultiArray`.
+    public var floatArray: [Float] {
+        (0..<self.count).map { index in Float(truncating: self[index]) }
+    }
   /**
     Returns a new MLMultiArray with the specified dimensions.
 
